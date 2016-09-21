@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PumpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="PumpModelStoreContainer">
+          <EntitySet Name="PendingQueue" EntityType="PumpModel.Store.PendingQueue" store:Type="Tables" store:Schema="dbo" store:Name="PendingQueue">
+            <DefiningQuery>SELECT 
+      [PendingQueue].[DueTime] AS [DueTime], 
+      [PendingQueue].[BrokerMessageId] AS [BrokerMessageId]
+      FROM [dbo].[PendingQueue] AS [PendingQueue]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Pump_Tb" EntityType="PumpModel.Store.Pump_Tb" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Pump.dbo.PendingQueue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PendingQueue">
+          <Key>
+            <PropertyRef Name="DueTime" />
+            <PropertyRef Name="BrokerMessageId" />
+          </Key>
+          <Property Name="DueTime" Type="datetime2" Nullable="false" />
+          <Property Name="BrokerMessageId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pump_Tb">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BrokerId" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Function Name="DequeuePending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NextId" Type="uniqueidentifier" Mode="InOut" />
+        </Function>
+        <Function Name="EnqueuePending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dueTime" Type="datetime2" Mode="In" />
+          <Parameter Name="brokerMessageId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PumpModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PumpEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Pump_Tb" EntityType="PumpModel.Pump_Tb" />
+          <EntitySet Name="PendingQueues" EntityType="PumpModel.PendingQueue" />
+          <FunctionImport Name="DequePending">
+            <Parameter Name="NextId" Mode="InOut" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="EnquePending">
+            <Parameter Name="dueTime" Mode="In" Type="DateTime" />
+            <Parameter Name="brokerMessageId" Mode="In" Type="Guid" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Pump_Tb">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="BrokerId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="PendingQueue">
+          <Key>
+            <PropertyRef Name="DueTime" />
+            <PropertyRef Name="BrokerMessageId" />
+          </Key>
+          <Property Type="DateTime" Name="DueTime" Nullable="false" Precision="7" />
+          <Property Type="Guid" Name="BrokerMessageId" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PumpModelStoreContainer" CdmEntityContainer="PumpEntities">
+          <EntitySetMapping Name="Pump_Tb">
+            <EntityTypeMapping TypeName="PumpModel.Pump_Tb">
+              <MappingFragment StoreEntitySet="Pump_Tb">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PendingQueues">
+            <EntityTypeMapping TypeName="PumpModel.PendingQueue">
+              <MappingFragment StoreEntitySet="PendingQueue">
+                <ScalarProperty Name="BrokerMessageId" ColumnName="BrokerMessageId" />
+                <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DequePending" FunctionName="PumpModel.Store.DequeuePending" />
+          <FunctionImportMapping FunctionImportName="EnquePending" FunctionName="PumpModel.Store.EnqueuePending" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

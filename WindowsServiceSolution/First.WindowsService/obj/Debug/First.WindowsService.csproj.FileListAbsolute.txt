@@ -1,0 +1,12 @@
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe.config
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.pdb
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\obj\Debug\First.WindowsService.csprojResolveAssemblyReference.cache
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\obj\Debug\First.WindowsService.exe
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\obj\Debug\First.WindowsService.pdb
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\obj\Debug\First.WindowsService.ProjectInstaller.resources
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\obj\Debug\First.WindowsService.csproj.GenerateResource.Cache
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowClassLibrary.dll
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\EntityFramework.dll
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowClassLibrary.pdb
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\EntityFramework.xml

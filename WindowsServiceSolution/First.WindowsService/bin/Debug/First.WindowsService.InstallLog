@@ -1,0 +1,21 @@
+﻿Installing assembly 'D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.InstallLog
+   assemblypath = D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe
+Installing service My own first windows service...
+Service My own first windows service has been successfully installed.
+Creating EventLog source My own first windows service in log Application...
+Committing assembly 'D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.InstallLog
+   assemblypath = D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe
+Uninstalling assembly 'D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.InstallLog
+   assemblypath = D:\Antony\Windows Service\WindowsServiceSolution\First.WindowsService\bin\Debug\First.WindowsService.exe
+Removing EventLog source My own first windows service.
+Service My own first windows service is being removed from the system...
+Service My own first windows service was successfully removed from the system.

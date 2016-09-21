@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PumpModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="PumpModelStoreContainer">
+    <EntitySet Name="PendingQueue" EntityType="PumpModel.Store.PendingQueue" store:Type="Tables" store:Schema="dbo" store:Name="PendingQueue">
+      <DefiningQuery>SELECT 
+      [PendingQueue].[DueTime] AS [DueTime], 
+      [PendingQueue].[BrokerMessageId] AS [BrokerMessageId]
+      FROM [dbo].[PendingQueue] AS [PendingQueue]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Pump_Tb" EntityType="PumpModel.Store.Pump_Tb" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Pump.dbo.PendingQueue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="PendingQueue">
+    <Key>
+      <PropertyRef Name="DueTime" />
+      <PropertyRef Name="BrokerMessageId" />
+    </Key>
+    <Property Name="DueTime" Type="datetime2" Nullable="false" />
+    <Property Name="BrokerMessageId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pump_Tb">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BrokerId" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Function Name="DequeuePending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NextId" Type="uniqueidentifier" Mode="InOut" />
+  </Function>
+  <Function Name="EnqueuePending" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dueTime" Type="datetime2" Mode="In" />
+    <Parameter Name="brokerMessageId" Type="uniqueidentifier" Mode="In" />
+  </Function>
+</Schema>

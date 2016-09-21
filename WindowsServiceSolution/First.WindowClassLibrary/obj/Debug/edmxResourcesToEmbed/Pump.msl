@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PumpModelStoreContainer" CdmEntityContainer="PumpEntities">
+    <EntitySetMapping Name="Pump_Tb">
+      <EntityTypeMapping TypeName="PumpModel.Pump_Tb">
+        <MappingFragment StoreEntitySet="Pump_Tb">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrokerId" ColumnName="BrokerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PendingQueues">
+      <EntityTypeMapping TypeName="PumpModel.PendingQueue">
+        <MappingFragment StoreEntitySet="PendingQueue">
+          <ScalarProperty Name="BrokerMessageId" ColumnName="BrokerMessageId" />
+          <ScalarProperty Name="DueTime" ColumnName="DueTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DequePending" FunctionName="PumpModel.Store.DequeuePending" />
+    <FunctionImportMapping FunctionImportName="EnquePending" FunctionName="PumpModel.Store.EnqueuePending" />
+  </EntityContainerMapping>
+</Mapping>

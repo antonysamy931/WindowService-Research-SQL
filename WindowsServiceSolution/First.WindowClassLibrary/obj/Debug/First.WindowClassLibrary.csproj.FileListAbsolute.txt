@@ -1,0 +1,8 @@
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\bin\Debug\First.WindowClassLibrary.dll.config
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\bin\Debug\First.WindowClassLibrary.dll
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\bin\Debug\First.WindowClassLibrary.pdb
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\bin\Debug\EntityFramework.dll
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\bin\Debug\EntityFramework.xml
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\obj\Debug\First.WindowClassLibrary.csprojResolveAssemblyReference.cache
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\obj\Debug\First.WindowClassLibrary.dll
+D:\Antony\Windows Service\WindowsServiceSolution\First.WindowClassLibrary\obj\Debug\First.WindowClassLibrary.pdb
